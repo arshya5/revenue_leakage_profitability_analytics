@@ -1,204 +1,163 @@
 # Revenue Leakage & Profitability Analytics Dashboard
 
-##  Executive Summary
+## Executive Summary
 
-Built an end-to-end analytics solution using SQL and Streamlit to identify revenue leakage and profitability gaps.
-The dashboard highlights loss-making orders, discount impact, and regional performance, enabling data-driven decision-making.
+This project focuses on identifying revenue leakage and profitability gaps using SQL and an interactive Streamlit dashboard. The analysis highlights loss-making transactions, the impact of discounting, and regional performance differences, with the goal of supporting more informed business decisions.
 
-##  Business Problem
+## Business Problem
 
-Despite strong revenue, businesses often face hidden **profit leakage** due to:
+Many businesses generate strong revenue but still struggle with profitability due to hidden leakages. These leakages often arise from excessive discounting, loss-making transactions, and uneven regional performance. The objective of this project is to identify where profits are being lost and suggest ways to improve overall financial performance.
 
-* Excessive discounting
-* Loss-making transactions
-* Regional inefficiencies
+## Tech Stack
 
-The goal of this project is to identify **where profit is lost and how to improve it**.
+The project was built using Python for data processing and dashboarding, MySQL for data storage and querying, Plotly for visualization, and dotenv for secure handling of database credentials.
 
-##  Tech Stack
-
-* Python (Pandas, Streamlit)
-* MySQL
-* Plotly
-* dotenv
-
-#  Analysis & Insights
+# Analysis & Insights
 
 ## Sales Across India
 
-![Line](visualizations/Line.png)
-
-** Path:**
-
-```text
-visualizations/Map.png
-```
-
-** Data Used:**
-
-* Region-wise total sales aggregated from MySQL
-* Query: `SUM(sales_amount) GROUP BY region`
-
-** Insight:**
-Sales are unevenly distributed across regions, with certain regions contributing significantly more revenue.
-
-** Interpretation:**
-The business is highly dependent on a few regions, increasing risk and limiting growth elsewhere.
-
-** Mitigation:**
-Expand operations and marketing in underperforming regions using targeted strategies.
-
-
-
-##  Revenue Distribution by Category
-
-![Donut](visualizations/Donut.png)
-
-** Path:**
-
-```text
-visualizations/Donut.png
-```
-
-** Data Used:**
-
-* Total revenue grouped by product category
-
-** Insight:**
-Revenue is relatively balanced across categories.
-
-** Interpretation:**
-While diversification reduces risk, it may hide low-margin categories.
-
-** Mitigation:**
-Combine revenue with profit analysis to identify high-value categories.
-
-
-
-##  Profit by Category
-
-![Bar](visualizations/Bar.png)
+![Sales Map](revenue-leakage-profitability-analytics/visualizations/Map.png)
 
 **Path:**
 
 ```text
-visualizations/Bar.png
+revenue-leakage-profitability-analytics/visualizations/Map.png
 ```
 
-** Data Used:**
+**Data Used:**
 
-* Total profit grouped by product category
+Region-wise sales data was aggregated from MySQL using a group by operation on the region field along with a sum of sales amount.
 
-** Insight:**
-Some categories generate lower profit despite similar revenue.
+**Insight:**
 
-** Interpretation:**
-Indicates margin inefficiencies due to pricing or discounting.
+The distribution of sales across regions is uneven, with certain regions contributing a significantly larger portion of total revenue.
 
-** Mitigation:**
-Optimize pricing and reduce discounts in low-margin categories.
+**Interpretation:**
 
+This indicates a dependency on a few key regions, which introduces risk and limits the business’s ability to scale evenly across markets.
 
+**Mitigation:**
 
-##  Monthly Revenue & Profit Trend
-
-![Line](visualizations/Line.png)
-
-** Path:**
-
-```text
-visualizations/Line.png
-```
-
-** Data Used:**
-
-* Monthly aggregation of revenue and profit
-
-** Insight:**
-Revenue is stable, but profit fluctuates.
-
-** Interpretation:**
-Profit instability suggests inconsistent cost or discount strategies.
-
-** Mitigation:**
-Standardize discount policies and monitor profitability closely.
-
-
-
-##  Full Dashboard
-
-![Dashboard](visualizations/Dashboard.png)
-
-** Path:**
-
-```text
-visualizations/Dashboard.png
-```
-
-** Description:**
-Interactive dashboard built using Streamlit with filters, KPIs, and visualizations for real-time analysis.
-
-
-
-##  Key Findings
-
-*  Discounts above 15% significantly reduce profitability
-*  Presence of consistent loss-making transactions
-*  Profit variability is not aligned with revenue trends
-*  Regional imbalance impacts overall performance
-
-
-
-##  Strategic Recommendations
-
-* Implement discount caps to protect margins
-* Monitor and eliminate loss-making orders
-* Shift focus from revenue to profit-driven KPIs
-* Strengthen performance in weaker regions
-
-
-##  How to Run
-
-1. Clone the repository
-2. Install dependencies:
-
-   ```
-   pip install -r requirements.txt
-   ```
-3. Create a `.env` file:
-
-   ```
-   DB_HOST=localhost
-   DB_USER=root
-   DB_PASSWORD=your_password
-   DB_NAME=sales_fullstack
-   ```
-4. Load data:
-
-   ```
-   python scripts/data_ingestion/load_to_mysql.py
-   ```
-5. Run dashboard:
-
-   ```
-   streamlit run dashboards/app.py
-   ```
+A more balanced regional strategy can be developed by investing in underperforming regions through targeted campaigns and better understanding of local demand patterns.
 
 ---
 
-##  Challenges
+## Revenue Distribution by Category
 
-* Secure handling of database credentials
-* Ensuring consistent data formatting
-* Mapping regions accurately for visualization
-* Aligning revenue insights with profitability
+![Donut](revenue-leakage-profitability-analytics/visualizations/Donut.png)
 
+**Path:**
 
+```text
+revenue-leakage-profitability-analytics/visualizations/Donut.png
+```
 
-##  Future Improvements
+**Data Used:**
 
-* Real-time data integration
-* Advanced analytics (forecasting)
-* Cloud deployment for public access
+Revenue was grouped by product category to understand how different segments contribute to total sales.
 
+**Insight:**
 
+Revenue appears to be fairly distributed across categories, with no single category dominating the overall contribution.
+
+**Interpretation:**
+
+While diversification reduces dependency on a single category, it may also conceal categories that generate lower margins despite contributing to revenue.
+
+**Mitigation:**
+
+Revenue analysis should be paired with profitability metrics to identify which categories truly drive value, allowing better pricing and inventory decisions.
+
+---
+
+## Profit by Category
+
+![Bar](revenue-leakage-profitability-analytics/visualizations/Bar.png)
+
+**Path:**
+
+```text
+revenue-leakage-profitability-analytics/visualizations/Bar.png
+```
+
+**Data Used:**
+
+Profit values were aggregated at the product category level to compare performance across segments.
+
+**Insight:**
+
+Certain categories generate noticeably lower profit despite having similar revenue levels.
+
+**Interpretation:**
+
+This suggests inefficiencies in pricing, discounting, or cost management within specific categories.
+
+**Mitigation:**
+
+Reducing unnecessary discounts and optimizing pricing strategies in low-margin categories can improve overall profitability.
+
+---
+
+## Monthly Revenue & Profit Trend
+
+![Line](revenue-leakage-profitability-analytics/visualizations/Line.png)
+
+**Path:**
+
+```text
+revenue-leakage-profitability-analytics/visualizations/Line.png
+```
+
+**Data Used:**
+
+Sales and profit were aggregated on a monthly basis to observe trends over time.
+
+**Insight:**
+
+Revenue remains relatively stable across months, while profit shows noticeable fluctuations.
+
+**Interpretation:**
+
+Stable revenue combined with inconsistent profit indicates variability in cost structures or discounting practices.
+
+**Mitigation:**
+
+Implementing consistent discount policies and monitoring profitability alongside revenue can help stabilize financial performance.
+
+---
+
+## Full Dashboard
+
+![Dashboard](revenue-leakage-profitability-analytics/visualizations/Dashboard.png)
+
+**Path:**
+
+```text
+revenue-leakage-profitability-analytics/visualizations/Dashboard.png
+```
+
+**Description:**
+
+The dashboard brings together key performance indicators, filters, and visualizations into a single interface, allowing users to interactively explore revenue, profit, and loss trends.
+
+---
+
+## Key Findings
+
+The analysis shows that high discount levels have a direct impact on profitability, especially when they exceed reasonable thresholds. There is also a consistent presence of loss-making transactions, which contributes to revenue leakage. Profit trends do not always align with revenue patterns, indicating inefficiencies in cost or pricing strategies. Additionally, regional imbalance suggests that certain markets are underutilized.
+
+## Strategic Recommendations
+
+Improving profitability requires a shift from focusing solely on revenue to emphasizing margin-based decision-making. Discounting should be controlled through defined limits, and loss-making transactions should be identified and minimized. Strengthening performance in weaker regions and optimizing category-level pricing can further enhance overall business performance.
+
+## How to Run
+
+Clone the repository, install the required dependencies, and create a `.env` file with your database credentials. Load the dataset into MySQL using the provided ingestion script, and then run the Streamlit dashboard to interact with the analysis.
+
+## Challenges
+
+One of the main challenges was ensuring secure handling of database credentials while maintaining ease of use. Data consistency, particularly with date formats and aggregation logic, required careful handling. Additionally, aligning revenue-focused insights with profitability metrics required thoughtful analysis.
+
+## Future Improvements
+
+The project can be extended by integrating real-time data pipelines and adding predictive analytics for forecasting. Deploying the dashboard online would also make it more accessible for stakeholders.
