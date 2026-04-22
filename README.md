@@ -1,5 +1,9 @@
 # Revenue Leakage & Profitability Analytics Dashboard
 
+**Problem:** High revenue but low profitability due to hidden leakage.
+
+**Solution:** Identified loss-making transactions, discount impact, and regional imbalance using SQL + dashboarding.
+
 ## Executive Summary
 
 This project focuses on identifying revenue leakage and profitability gaps using SQL and an interactive Streamlit dashboard. The analysis highlights loss-making transactions, the impact of discounting, and regional performance differences, with the goal of supporting more informed business decisions.
@@ -145,6 +149,12 @@ The dashboard brings together key performance indicators, filters, and visualiza
 ## Key Findings
 
 The analysis shows that high discount levels have a direct impact on profitability, especially when they exceed reasonable thresholds. There is also a consistent presence of loss-making transactions, which contributes to revenue leakage. Profit trends do not always align with revenue patterns, indicating inefficiencies in cost or pricing strategies. Additionally, regional imbalance suggests that certain markets are underutilized.
+
+###  Key Insights
+- High discounts → direct profit loss
+- Loss-making transactions consistently present
+- Profit ≠ Revenue (misleading business metric)
+- Regional imbalance affects scalability
 
 ## Strategic Recommendations
 
