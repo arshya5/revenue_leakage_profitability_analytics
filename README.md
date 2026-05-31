@@ -1,4 +1,8 @@
+##  Live Demo
+[Open Dashboard](https://arshya-profitability-analytics.streamlit.app/)
+
 # Revenue Leakage & Profitability Analytics Dashboard
+
 
 **Problem:** High revenue but low profitability due to hidden leakage.
 
@@ -170,4 +174,13 @@ One of the main challenges was ensuring secure handling of database credentials 
 
 ## Future Improvements
 
-The project can be extended by integrating real-time data pipelines and adding predictive analytics for forecasting. Deploying the dashboard online would also make it more accessible for stakeholders.
+The project can be extended by integrating real-time data pipelines and adding predictive analytics for forecasting. 
+
+## NOTE - SQL was used for data extraction, transformation, and business analysis before powering the Streamlit dashboard.
+
+
+
+
+
+
+
